@@ -16,7 +16,7 @@
         <junit>3.8.1</junit>
         <javax.servlet-api>3.1.0</javax.servlet-api>
         <jersey>2.14</jersey>
-        <jackson>2.3.2</jackson>
+        <jackson>2.14</jackson>
     </properties>
 
 
@@ -144,39 +144,26 @@
             <version>${javax.servlet-api}</version>
             <scope>provided</scope>
         </dependency>
-
-        <!-- REST API Cient (JSR spec) with Jersey impl -->
+        <!-- Jersey container servlet -->
         <dependency>
-            <groupId>org.glassfish.jersey.core</groupId>
-            <artifactId>jersey-client</artifactId>
+            <groupId>org.glassfish.jersey.containers</groupId>
+            <artifactId>jersey-container-servlet</artifactId>
             <version>${jersey}</version>
+            <scope>provided</scope>
         </dependency>
-
-        <!-- JSON Media Processing API (JSR spec) -->
-        <dependency>
-            <groupId>org.glassfish.jersey.media</groupId>
-            <artifactId>jersey-media-json-processing</artifactId>
-            <version>${jersey}</version>
-        </dependency>
-
-        <!-- JSON by Jackson 2 provider -->
+        <!-- Jersey JSON Jackson (2.x) entity providers support -->
         <dependency>
             <groupId>org.glassfish.jersey.media</groupId>
             <artifactId>jersey-media-json-jackson</artifactId>
-            <version>${jersey}</version>
-        </dependency>
-
-        <!-- Jackson2 XML marshall/unmarshall -->
-        <dependency>
-            <groupId>com.fasterxml.jackson.jaxrs</groupId>
-            <artifactId>jackson-jaxrs-xml-provider</artifactId>
             <version>${jackson}</version>
+            <scope>provided</scope>
         </dependency>
-
+        <!-- Jersey JSON-P (JSR 353) entity providers support proxy module.-->
         <dependency>
-            <groupId>com.fasterxml.jackson.dataformat</groupId>
-            <artifactId>jackson-dataformat-xml</artifactId>
+            <groupId>org.glassfish.jersey.media</groupId>
+            <artifactId>jersey-media-json-processing</artifactId>
             <version>${jackson}</version>
+            <scope>provided</scope>
         </dependency>
 
         <!-- REST Jersey integration with Spring framework -->

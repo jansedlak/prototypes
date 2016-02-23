@@ -42,50 +42,50 @@ public class AppConfig {
     @Value("${packages.to.scan}")
     private  String packagesToScan;
 
-//    @Bean
-//    LocalContainerEntityManagerFactoryBean getLocalContainerEntityManagerFactoryBean(){
-//      LocalContainerEntityManagerFactoryBean localContainerEntityManagerFactoryBean = new LocalContainerEntityManagerFactoryBean();
-//        localContainerEntityManagerFactoryBean.setDataSource(getDriverManagerDataSource());
-//        localContainerEntityManagerFactoryBean.setPersistenceUnitName("persistenceUnit");
-//        localContainerEntityManagerFactoryBean.setPackagesToScan(packagesToScan);
-//
-//        HibernateJpaVendorAdapter hibernateJpaVendorAdapter = new HibernateJpaVendorAdapter();
-//        hibernateJpaVendorAdapter.setDatabasePlatform(hibernateDatabasePlatform);
-//
-//        final Properties props = new Properties();
-//        props.setProperty("hibernate.dialect", hibernateDialect);
-//        localContainerEntityManagerFactoryBean.setJpaProperties(props);
-//
-//        localContainerEntityManagerFactoryBean.setJpaVendorAdapter(hibernateJpaVendorAdapter);
-//
-//        return localContainerEntityManagerFactoryBean;
-//    }
-//
-//    @Bean
-//    DriverManagerDataSource getDriverManagerDataSource(){
-//        DriverManagerDataSource driverManagerDataSource = new DriverManagerDataSource();
-//        driverManagerDataSource.setDriverClassName(jdbcDriver);
-//        driverManagerDataSource.setUrl(jdbcUrl);
-//        driverManagerDataSource.setUsername(jdbcUsername);
-//        driverManagerDataSource.setPassword(jdbcPassword);
-//
-//        return driverManagerDataSource;
-//    }
-//
-//    @Bean
-//    public PersistenceExceptionTranslationPostProcessor exceptionTranslation() {
-//        return new PersistenceExceptionTranslationPostProcessor();
-//    }
-//
-//    @Bean
-//    public static PropertySourcesPlaceholderConfigurer propertyConfigInDev() {
-//        return new PropertySourcesPlaceholderConfigurer();
-//    }
-//
-//    @Bean
-//    public PlatformTransactionManager transactionManager(){
-//        JpaTransactionManager transactionManager = new JpaTransactionManager();
-//        transactionManager.setEntityManagerFactory(getLocalContainerEntityManagerFactoryBean().getObject());
-//        return transactionManager;
-//    }
+    @Bean
+    LocalContainerEntityManagerFactoryBean getLocalContainerEntityManagerFactoryBean(){
+      LocalContainerEntityManagerFactoryBean localContainerEntityManagerFactoryBean = new LocalContainerEntityManagerFactoryBean();
+        localContainerEntityManagerFactoryBean.setDataSource(getDriverManagerDataSource());
+        localContainerEntityManagerFactoryBean.setPersistenceUnitName("persistenceUnit");
+        localContainerEntityManagerFactoryBean.setPackagesToScan(packagesToScan);
+
+        HibernateJpaVendorAdapter hibernateJpaVendorAdapter = new HibernateJpaVendorAdapter();
+        hibernateJpaVendorAdapter.setDatabasePlatform(hibernateDatabasePlatform);
+
+        final Properties props = new Properties();
+        props.setProperty("hibernate.dialect", hibernateDialect);
+        localContainerEntityManagerFactoryBean.setJpaProperties(props);
+
+        localContainerEntityManagerFactoryBean.setJpaVendorAdapter(hibernateJpaVendorAdapter);
+
+        return localContainerEntityManagerFactoryBean;
+    }
+
+    @Bean
+    DriverManagerDataSource getDriverManagerDataSource(){
+        DriverManagerDataSource driverManagerDataSource = new DriverManagerDataSource();
+        driverManagerDataSource.setDriverClassName(jdbcDriver);
+        driverManagerDataSource.setUrl(jdbcUrl);
+        driverManagerDataSource.setUsername(jdbcUsername);
+        driverManagerDataSource.setPassword(jdbcPassword);
+
+        return driverManagerDataSource;
+    }
+
+    @Bean
+    public PersistenceExceptionTranslationPostProcessor exceptionTranslation() {
+        return new PersistenceExceptionTranslationPostProcessor();
+    }
+
+    @Bean
+    public static PropertySourcesPlaceholderConfigurer propertyConfigInDev() {
+        return new PropertySourcesPlaceholderConfigurer();
+    }
+
+    @Bean
+    public PlatformTransactionManager transactionManager(){
+        JpaTransactionManager transactionManager = new JpaTransactionManager();
+        transactionManager.setEntityManagerFactory(getLocalContainerEntityManagerFactoryBean().getObject());
+        return transactionManager;
+    }
 }
